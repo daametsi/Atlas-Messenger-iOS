@@ -210,6 +210,7 @@ static NSString *const ATLMOnDiskPersistenceManagerSessionFileName = @"Session.p
 - (BOOL)persistUsers:(NSSet *)users error:(NSError **)error
 {
     NSString *path = [self usersPath];
+    NSLog(@"users: %@, toFile: %@", users, path);
     if (![NSKeyedArchiver archiveRootObject:users toFile:path]) return NO;
     self.users = users;
     return YES;

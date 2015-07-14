@@ -33,7 +33,7 @@
 #import "ATLMUtilities.h"
 
 // TODO: Configure a Layer appID from https://developer.layer.com/dashboard/atlas/build
-static NSString *const ATLMLayerAppID = nil;
+static NSString *const ATLMLayerAppID = @"f3cb34b0-fb8d-11e4-8624-84d03a00522a";
 
 @interface ATLMAppDelegate () <MFMailComposeViewControllerDelegate>
 

@@ -96,6 +96,7 @@ NSString *const ATLMAtlasUserNameKey = @"name";
     
     NSString *urlString = [NSString stringWithFormat:@"apps/%@/atlas_identities", [self.layerClient.appID UUIDString]];
     NSURL *URL = [NSURL URLWithString:urlString relativeToURL:self.baseURL];
+    NSLog(@"this is the url: %@", URL);
     NSDictionary *parameters = @{ @"name": name, @"nonce" : nonce };
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
     request.HTTPMethod = @"POST";
@@ -117,6 +118,8 @@ NSString *const ATLMAtlasUserNameKey = @"name";
         if (success) {
             NSError *error;
             NSArray *userData = userDetails[ATLMAtlasIdentitiesKey];
+            NSLog(@"userData: %@", userDetails);
+            NSLog(@"userIds: %@", userDetails[ATLMAtlasIdentitiesKey]);
             BOOL success = [self persistUserData:userData error:&error];
             if (!success) {
                 completion(nil, error);
@@ -160,6 +163,8 @@ NSString *const ATLMAtlasUserNameKey = @"name";
         if (success) {
             NSError *error;
             NSArray *userData = (NSArray *)userDetails;
+            NSLog(@"userData: %@", userDetails);
+            //NSLog(@"userIds: %@", userDetails[ATLMAtlasIdentitiesKey]);
             BOOL success = [self persistUserData:userData error:&error];
             if (!success) {
                 NSLog(@"Failed synchronizing participants with error: %@", error);
